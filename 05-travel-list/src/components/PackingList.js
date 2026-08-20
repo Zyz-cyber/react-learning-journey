@@ -1,13 +1,12 @@
-# record my react-learning-journey
+import { useState } from "react";
+import Item from "./Item";
 
-## -Thinking In React: State Management
-
-20260818
-
-### Sorting Items
-
-```jsx
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+export default function PackingList({
+  items,
+  onDeleteItem,
+  onToggleItem,
+  onClearitem,
+}) {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItems;
@@ -32,6 +31,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
             item={item}
             onDeleteItem={onDeleteItem}
             onToggleItem={onToggleItem}
+            onClearitem={onClearitem}
             key={item.id}
           />
         ))}
@@ -43,8 +43,8 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={onClearitem}>Clear list</button>
       </div>
     </div>
   );
 }
-```
